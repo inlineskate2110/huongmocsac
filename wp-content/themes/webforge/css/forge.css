@@ -1,0 +1,63 @@
+/**
+ * The Template for displaying all single posts.
+ *
+ * @package Web Forge
+ * @author Web Forge
+ * @link http://webforge.site
+ */
+#Top_bar .top_bar_right {
+    top: 0px;
+}
+#Top_bar .top_bar_right:before {
+    width: 11px;
+    left: -11px;
+    top: 0px;
+	-moz-transform: skewX(0deg) skewY(0deg);
+    -webkit-transform: skewX(0deg) skewY(0deg);
+    -o-transform: skewX(0deg) skewY(0deg);
+    -ms-transform: skewX(0deg) skewY(0deg);
+    transform: skewX(0deg) skewY(0deg);
+	background-image:none;
+}
+.widget_archive ul li:after, .widget_nav_menu ul li:after,
+ul.list_mixed li:after, ul.list_check li:after, ul.list_star li:after, ul.list_idea li:after
+{
+    width: 100%;
+    left: 0px;
+}
+.highlight_wrapper {display: block;height: 60px;position: absolute;right: 20px;text-align: right;top: 20px;width: 468px;}
+.highlight_wrapper .device_mobile {display:none;}
+.highlight_wrapper .device_tablet {display:none;}
+.image-wrapper a.link {display:block;}
+
+#Top_bar.has_highlight.is-sticky .highlight_wrapper {display:none;}
+blockquote:after, blockquote{background:none;}
+
+@media only screen  and (max-width: 959px){
+    #Top_bar.has_highlight {}
+    #Top_bar.has_highlight .container {}
+    #Top_bar.has_highlight .container .top_bar_left {}
+    
+    .highlight_wrapper {margin:0;padding:10px 0;height:auto !important;z-index:9999;text-align:center;float:none;width:100%;height:auto;background:#000;position:relative;right:0;left:0;top:0;}
+    .highlight_wrapper * {color:#fff;font-size:100%;}    
+    .highlight_wrapper .device_tablet {display:block;}
+    .highlight_wrapper .device_desktop {display:none;}
+}
+
+@media only screen  and (max-width: 767px){
+    #Top_bar .logo { text-align: left !important; }
+    #Top_bar .logo #logo{ margin-left:0px;}
+    .menu_wrapper, .header-transparent #Top_bar .top_bar_left {overflow: hidden;}
+    body:not(.template-slider) #Header {min-height: 0 !important;}
+    
+    #Top_bar.has_highlight {}
+    #Top_bar.has_highlight .container {position:inherit;max-width:100% !important;}
+    #Top_bar.has_highlight .container .top_bar_left {margin:0 auto;max-width:260px !important;}
+    
+    .highlight_wrapper {margin:0;padding:10px 0;height:auto !important;z-index:9999;text-align:center;float:none;width:100%;height:auto;background:#000;position:relative;right:0;left:0;top:0;}
+    .highlight_wrapper * {color:#fff;font-size:100%;}
+    .highlight_wrapper .device_desktop {display:none;}
+    .highlight_wrapper .device_tablet {display:none;}
+    .highlight_wrapper .device_mobile {display:block;}
+	#Action_bar.has_highlight {display:none;}
+}
