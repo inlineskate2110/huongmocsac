@@ -40,26 +40,26 @@
 						</div>
 					</div>
 				<?php // endif; ?>
-				<div class="header-login text-right text-left-xs col-sm-6 no-gutter pull-right"> 
-					<?php if ( get_theme_mod( 'alpha_store_account', 1 ) == 1 && class_exists( 'WooCommerce' ) ) { // Login Register  ?>
-						<?php if ( is_user_logged_in() ) { ?>
-							<?php $login_text = apply_filters('alpha_store_my_account', get_theme_mod( 'alpha_store_my_account_custom_text', '' ) ); if( !empty( $login_text ) ) : ?>
-								<a class="login-link logged-in" href="<?php echo get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ); ?>" title="<?php esc_attr_e( 'My Account', 'alpha-store' ); ?>"><?php echo wp_kses_post($login_text) ?></a>
-							<?php else : ?>
-								<a class="login-link logged-in" href="<?php echo get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ); ?>" title="<?php esc_attr_e( 'My Account', 'alpha-store' ); ?>"><?php esc_html_e( 'My Account', 'alpha-store' ); ?></a>
-							<?php endif; ?>
-						<?php } else { ?>
-							<?php if( get_theme_mod( 'alpha_store_login_custom_text', '' ) != '' ) : ?>
-								<a class="login-link logged-out" href="<?php echo get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ); ?>" title="<?php esc_attr_e( 'Login / Register', 'alpha-store' ); ?>"><?php echo wp_kses_post( get_theme_mod( 'alpha_store_login_custom_text', '' ) ); ?></a>
-							<?php else : ?>
-								<a class="login-link logged-out" href="<?php echo get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ); ?>" title="<?php esc_attr_e( 'Login / Register', 'alpha-store' ); ?>"><?php esc_html_e( 'Login / Register', 'alpha-store' ); ?></a>
-							<?php endif; ?>
-						<?php } ?>
-					<?php } ?>
-					<?php if ( get_theme_mod( 'alpha_store_socials', 0 ) == 1 ) : ?>
-						<?php alpha_store_social_links(); ?>
-					<?php endif; ?>  
-				</div>
+<!--				<div class="header-login text-right text-left-xs col-sm-6 no-gutter pull-right"> -->
+<!--					--><?php //if ( get_theme_mod( 'alpha_store_account', 1 ) == 1 && class_exists( 'WooCommerce' ) ) { // Login Register  ?>
+<!--						--><?php //if ( is_user_logged_in() ) { ?>
+<!--							--><?php //$login_text = apply_filters('alpha_store_my_account', get_theme_mod( 'alpha_store_my_account_custom_text', '' ) ); if( !empty( $login_text ) ) : ?>
+<!--								<a class="login-link logged-in" href="--><?php //echo get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ); ?><!--" title="--><?php //esc_attr_e( 'My Account', 'alpha-store' ); ?><!--">--><?php //echo wp_kses_post($login_text) ?><!--</a>-->
+<!--							--><?php //else : ?>
+<!--								<a class="login-link logged-in" href="--><?php //echo get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ); ?><!--" title="--><?php //esc_attr_e( 'My Account', 'alpha-store' ); ?><!--">--><?php //esc_html_e( 'My Account', 'alpha-store' ); ?><!--</a>-->
+<!--							--><?php //endif; ?>
+<!--						--><?php //} else { ?>
+<!--							--><?php //if( get_theme_mod( 'alpha_store_login_custom_text', '' ) != '' ) : ?>
+<!--								<a class="login-link logged-out" href="--><?php //echo get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ); ?><!--" title="--><?php //esc_attr_e( 'Login / Register', 'alpha-store' ); ?><!--">--><?php //echo wp_kses_post( get_theme_mod( 'alpha_store_login_custom_text', '' ) ); ?><!--</a>-->
+<!--							--><?php //else : ?>
+<!--								<a class="login-link logged-out" href="--><?php //echo get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ); ?><!--" title="--><?php //esc_attr_e( 'Login / Register', 'alpha-store' ); ?><!--">--><?php //esc_html_e( 'Login / Register', 'alpha-store' ); ?><!--</a>-->
+<!--							--><?php //endif; ?>
+<!--						--><?php //} ?>
+<!--					--><?php //} ?>
+<!--					--><?php //if ( get_theme_mod( 'alpha_store_socials', 0 ) == 1 ) : ?>
+<!--						--><?php //alpha_store_social_links(); ?>
+<!--					--><?php //endif; ?><!--  -->
+<!--				</div>-->
 			</div>
 		<?php } ?>
 	</div>
