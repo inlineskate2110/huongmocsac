@@ -1,0 +1,20 @@
+<!--@name Calendar @-->
+<!--@vars
+{
+    "widget": {
+        "type": "WP_Widget_Calendar",
+        "title": "Calendar"
+    }
+}
+@-->
+<div class="bloks__block bloks-widget bloks-widget-fullwidth"
+     v-bind:class="colorset"
+     v-bind:style="{ backgroundAttachment:styles.backgroundAttachment, paddingTop: styles.paddingTop + 'px', paddingBottom: styles.paddingBottom + 'px', backgroundImage: 'url(' + styles.backgroundImage + ')', backgroundRepeat: styles.backgroundRepeat, backgroundPosition: styles.backgroundPosition }"
+     v-settings="{ title: 'Text <span class=\'\ibloks-chevron-right\'\></span> Heading', widget: 'widget' }"
+>
+    <div class="bloks__block-content bloks__block-boxed">
+        <div class="container-fluid">
+            <div v-widget="widget"></div>
+        </div>
+    </div>
+</div>

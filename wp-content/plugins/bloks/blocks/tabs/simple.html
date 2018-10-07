@@ -1,0 +1,140 @@
+<!--@name Simple @-->
+<!--@screenshot assets/images/builder/blocks/text/text-tab.png @-->
+<!--@styles
+{
+    "paddingTop": 90,
+    "paddingBottom": 50,
+    "backgroundImage": "http://bloks.co/demo_images/Text/Tabs1.jpg"
+}
+@-->
+<!--@title Our Menu @-->
+<!--@subtitle Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam @-->
+<!--@tabs
+[
+    {
+        "title": "Categories 1",
+        "url": "http://bloks.co/demo_images/Tabs/21-5-image-Tab-01.jpg",
+        "alt": "Categories 1",
+        "subtitle": "Neque porro quisquam est qui dolorem ipsum quia dolor",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "button": {
+            "text": "Read more",
+            "align": "bloks__button-right",
+            "size": "bloks__button-medium",
+            "href": "#"
+            }
+    },
+    {
+        "title": "Categories 2",
+        "url": "http://bloks.co/demo_images/Tabs/21-5-image-Tab-02.jpg",
+        "alt": "Categories 2",
+        "subtitle": "Neque porro quisquam est qui dolorem ipsum quia dolor",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "button": {
+            "text": "Read more",
+            "align": "bloks__button-right",
+            "size": "bloks__button-medium",
+            "href": "#"
+            }
+    },
+    {
+        "title": "Categories 3",
+        "url": "http://bloks.co/demo_images/Tabs/21-5-image-Tab-03.jpg",
+        "alt": "Categories 3",
+        "subtitle": "Neque porro quisquam est qui dolorem ipsum quia dolor",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "button": {
+            "text": "Read more",
+            "align": "bloks__button-right",
+            "size": "bloks__button-medium",
+            "href": "#"
+            }
+    },
+    {
+        "title": "Categories 4",
+        "url": "http://bloks.co/demo_images/Tabs/21-5-image-Tab-04.jpg",
+        "alt": "Categories 4",
+        "subtitle": "Neque porro quisquam est qui dolorem ipsum quia dolor",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "button": {
+            "text": "Read more",
+            "align": "bloks__button-right",
+            "size": "bloks__button-medium",
+            "href": "#"
+            }
+    },
+    {
+        "title": "Categories 5",
+        "url": "http://bloks.co/demo_images/Tabs/21-5-image-Tab-05.jpg",
+        "alt": "Categories 5",
+        "subtitle": "Neque porro quisquam est qui dolorem ipsum quia dolor",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "button": {
+            "text": "Read more",
+            "align": "bloks__button-right",
+            "size": "bloks__button-medium",
+            "href": "#"
+            }
+    }
+]
+@-->
+<!--@position{
+    "class": "tabs-vertical-left"
+}
+@-->
+<!--@colorsets
+{
+    "dark": {
+        "styles.backgroundColor": "rgba(0, 0, 0, 0.6)"
+    },
+    "none": {
+        "styles.backgroundColor": "rgba(255, 255, 255, 0.6)"
+    }
+}
+@-->
+<div class="bloks__block bloks__block-tabs bloks__block-text-left"
+     v-bind:class="colorset"
+     v-bind:style="{ backgroundAttachment:styles.backgroundAttachment, paddingTop: styles.paddingTop + 'px', paddingBottom: styles.paddingBottom + 'px', backgroundRepeat: styles.backgroundRepeat, backgroundPosition: styles.backgroundPosition }"
+     v-settings="{ title: 'Text <span class=\'\ibloks-chevron-right\'\></span> Tabs', tabsposition: 'position' }"
+>
+    <div class="bloks__block-boxed bloks__block-tabs ">
+        <div class="head_title_ourmenuzone">
+            <bloks-editor :content.sync="title" :header="true" :color="true" :align="true" class="bloks__block-menu-title" ></bloks-editor>
+            <bloks-editor :content.sync="subtitle" :header="true" :color="true" :align="true" class="bloks__block-menu-subtitle" ></bloks-editor>
+        </div>
+        <div v-tabs="tabs" v-bind:class="position.class" class="row">
+            <div class="bor-tab">
+                <ul class="nav nav-tabs " role="tablist" id="blok-tab-1">
+                    <li data-index="{{index}}" v-bind:class="{ active: index == 0 }" v-for="(index, value) in tabs">
+                        <div class="tabs-list" href="#{{id}}-{{index}}"
+                           aria-controls="home"
+                           role="tab"
+                           data-toggle="tab"
+                        ><bloks-editor :content.sync="tabs[index].title" :color="true" placeholder="Your text here"></bloks-editor></div>
+                        <span v-destroy data-tabblok="{{id}}" class="remove-tab"><i class="ibloks-delete-thumb"></i></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content" id="blok-tab-2">
+                <div v-for="(n, value) in tabs" class="tab-pane" id="{{id}}-{{n}}" v-bind:class="{ active: n == 0 }"
+                     data-index="{{n}}">
+                    <div class="image">
+                        <bloks-media class="media-tabs"
+                                     :title.sync="tabs[n].title"
+                                     :autoplay.sync="tabs[n].autoplay"
+                                     :href.sync="tabs[n].href"
+                                     :type.sync="tabs[n].type"
+                                     :src.sync="tabs[n].url"
+                                     :settings="{ volume: tabs[n].volume,autoplay: tabs[n].autoplay}">
+                        </bloks-media>
+                    </div>
+                    <div class="description">
+                        <bloks-editor :content.sync="tabs[n].subtitle" :header="true" :color="true" :align="true" class="subtitle" ></bloks-editor>
+                        <bloks-editor :content.sync="tabs[n].description" :header="true" :color="true" :align="true" class="desc" ></bloks-editor>
+                        <bloks-button :href.sync="tabs[n].button.href" :title.sync="tabs[n].button.text" :align.sync="tabs[n].button.align" :size.sync="tabs[n].button.size"></bloks-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

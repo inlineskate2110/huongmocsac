@@ -1,0 +1,102 @@
+<!--@name Two cols @-->
+<!--@screenshot assets/images/builder/blocks/form/form1.png @-->
+<!--@fields
+[
+    {"label": "Your Name",          "name": "name",             "type": "text",     "togglelabel":true, "data_attr": "name",       "placeholder": "Your Name"},
+    {"label": "E-Mail",             "name": "email",            "type": "text",     "togglelabel":true, "data_attr": "email",      "placeholder": "Email Address"},
+    {"label": "Comment",            "name": "message",          "type": "textarea", "togglelabel":true, "data_attr": "textarea",   "placeholder": "Message Here..."}
+]
+@-->
+<!--@vars
+{
+    "btnmore": {
+        "name": "Submit",
+        "link": ""
+    },
+    "styles": {
+        "backgroundImage": "",
+        "paddingTop": 100,
+        "paddingBottom": 100,
+        "backgroundColor": ""
+    },
+    "form": {
+        "header": "<h2>Contact Form</h2>",
+        "subheader": "<p>Hi there, contact us to ask about ourcollection!</p>"
+    },
+    "settings": {
+        "header": true,
+        "content": true
+    }
+}
+@-->
+<!--@colorsets
+{
+    "dark": {
+        "styles.backgroundColor": "rgba(0, 0, 0, 0.6)"
+    },
+    "none": {
+        "styles.backgroundColor": "rgba(255, 255, 255, 0.6)"
+    }
+}
+@-->
+<div v-bind:class="colorset"
+     v-settings="{ title: 'Form <span class=\'\ibloks-chevron-right\'\></span> Two Cols', layout: 'settings' }"
+     class="bloks__component__bloks-form form-2-column"
+     v-bind:style="{ backgroundAttachment:styles.backgroundAttachment, paddingTop: styles.paddingTop + 'px', paddingBottom: styles.paddingBottom + 'px', paddingRight: styles.paddingRight + 'px', paddingLeft: styles.paddingLeft + 'px', backgroundImage: 'url(' + styles.backgroundImage + ')', backgroundRepeat: styles.backgroundRepeat, backgroundPosition: styles.backgroundPosition }">
+    <div class="bloks__block-content bloks__block-boxed">
+        <div class="form-header">
+            <bloks-editor :content.sync="form.header" :header="true" :list="false" :color="true"
+                          :align="true" v-if="settings.header"></bloks-editor>
+        </div>
+        <div class="form-sub-header">
+            <bloks-editor :content.sync="form.subheader" :header="false" :list="true" :color="true"
+                          :align="true" v-if="settings.content"></bloks-editor>
+        </div>
+
+        <div class="form-container esp-reservation-form container-fluid ">
+            <bloks-form :name.sync="btnmore.name" :link.sync="btnmore.link" :form="form" :fields.sync="fields"></bloks-form>
+                <form action="bloks-sendmail" id="form-send-{{id}}" class="bloks-formmail">
+                    <div class="form-field row">
+                        <!-- text field -->
+                        <div class="text-field col-lg-6 col-md-6 form-two-cols">
+                            <div v-for="(idx, item) in fields" class="list-field {{item.type}}-col">
+                                <div class="col-xs-12 col-md-12" v-if="item.type=='text'">
+                                    <div class="preview-field">
+                                        <label v-if="item.togglelabel==true" class="edit-label" data-label="{{item.label}}">{{item.label}}</label>
+                                        <input placeholder="{{item.placeholder}}" type="{{item.type}}" class="form-control" name="{{item.name}}" data_attr="{{item.data_attr}}" value="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- textarea field -->
+                        <div class="textarea-field col-lg-6 col-md-6 form-two-cols">
+                            <div v-for="(idx, item) in fields" class="list-field {{item.type}}-col ">
+                                <div class="col-xs-12 col-md-12" v-if="item.type=='textarea'">
+                                    <div class="preview-field">
+                                        <label v-if="item.togglelabel==true" class="edit-label" data-label="{{item.label}}">{{item.label}}</label>
+                                        <textarea placeholder="{{item.placeholder}}" rows="3" cols="10" name="{{item.name}}" data_attr="{{item.data_attr}}" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- process action -->
+                    <div class="row form-action form-group clearfix">
+                        <div class="btn-sendmail">
+                            <button type="button" class="btn btn-send btn-send-email" id="send-{{id}}">
+                                <span class="action-send">{{btnmore.name}}</span>
+                            </button>
+                        </div>
+                        <div class="wrap-msgsend">
+                            <div class="msg-loading"><span class="send-loading"></span></div>
+                            <div class="msg-sendmail"></div>
+                        </div>
+                        <input type="hidden" name="action" value="bloks-sendmail"/>
+                        <input type="hidden" name="linksubmit" value="{{btnmore.link}}"/>
+                    </div>
+                </form>
+
+            </div>
+    </div>
+</div>

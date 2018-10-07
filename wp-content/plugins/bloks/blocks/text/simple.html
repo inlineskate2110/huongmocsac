@@ -1,0 +1,35 @@
+<!--@name Simple @-->
+<!--@screenshot assets/images/builder/blocks/text/text2.png @-->
+<!--@styles
+{
+    "paddingTop": 200,
+    "paddingBottom": 200,
+    "backgroundImage": "http://bloks.co/demo_images/Text/simple.jpg",
+    "backgroundColor": "rgba(255, 255, 255, 0.6)"
+}
+@-->
+<!--@html
+<p class="ql-align-center">Integer sagittis sem odio, vitae mollis justo luctus a. Suspendisse potenti. Nam convallis, turpis id ornare malesuada, felis massa bibendum est, quis condimentum metus purus rhoncus nibh. Donec ante felis, viverra nec finibus sit amet, fermentum id ex. Mauris molestie quam arcu, vel malesuada felis ultrices ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas sem eros, malesuada vel nunc pharetra, aliquam hendrerit justo. In venenatis pretium dolor, ut eleifend nisi. Maecenas viverra enim est, vel mattis purus tristique sed. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras fermentum, justo ac pharetra volutpat, justo turpis consequat elit, sed feugiat libero urna in massa. Quisque maximus ex sed sem molestie efficitur. Proin viverra ultrices tempor. Integer sed egestas nibh. Morbi cursus nibh ac eros interdum cursus.</p>
+<p class="ql-align-center">Integer accumsan felis est, at scelerisque enim imperdiet sit amet. Nam molestie laoreet sem sollicitudin tincidunt. Curabitur sit amet pulvinar lectus. Morbi id mi eget ipsum sodales blandit a eget tortor. Curabitur viverra libero quis lacinia porttitor. Morbi dignissim lectus in efficitur pellentesque. Nullam sit amet sem at nunc sollicitudin mattis sed a arcu. In lacinia faucibus maximus. Mauris sit amet ultricies lorem. Quisque non erat ut dolor sagittis ultrices. Cras pharetra ipsum et eros convallis, vel iaculis mi elementum.</p>
+@-->
+<!--@colorsets
+{
+    "dark": {
+        "styles.backgroundColor": "rgba(0, 0, 0, 0.6)"
+    },
+    "none": {
+        "styles.backgroundColor": "rgba(255, 255, 255, 0.6)"
+    }
+}
+@-->
+<div class="bloks__block bloks__block-text bloks__block-text-simple"
+     v-bind:class="colorset"
+     v-bind:style="{ backgroundAttachment:styles.backgroundAttachment, paddingTop: styles.paddingTop + 'px', paddingBottom: styles.paddingBottom + 'px', paddingRight: styles.paddingRight + 'px', paddingLeft: styles.paddingLeft + 'px', backgroundImage: 'url(' + styles.backgroundImage + ')', backgroundRepeat: styles.backgroundRepeat, backgroundPosition: styles.backgroundPosition }"
+     v-settings="{ title: 'Text <span class=\'\ibloks-chevron-right\'\></span> Simple' }"
+>
+    <div class="bloks__block-content bloks__block-boxed">
+        <div class="container-fluid">
+            <bloks-editor :content.sync="html" :header="true" :list="true" :color="true" :align="true"></bloks-editor>
+        </div>
+    </div>
+</div>

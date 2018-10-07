@@ -1,0 +1,35 @@
+<!--@name Heading @-->
+<!--@screenshot assets/images/builder/blocks/text/text1.png @-->
+<!--@styles
+{
+    "paddingTop": 200,
+    "paddingBottom": 200,
+    "backgroundImage": "http://bloks.co/demo_images/Text/heading.jpg",
+    "backgroundColor": "rgba(255, 255, 255, 0.6)"
+}
+@-->
+<!--@html
+<h2 class="ql-align-center">Please Type your heading here</h2>
+<p class="ql-align-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quam purus, eleifend in neque a, pellentesque facilisis sem.<br/>Pellentesque sed tempor nisl. Praesent faucibus sit amet est in ultrices. Proin luctus nisi justo, non dictum nibh malesuada</p>
+@-->
+<!--@colorsets
+{
+    "dark": {
+        "styles.backgroundColor": "rgba(0, 0, 0, 0.6)"
+    },
+    "none": {
+        "styles.backgroundColor": "rgba(255, 255, 255, 0.6)"
+    }
+}
+@-->
+<div class="bloks__block bloks__block-text bloks__block-text-heading"
+     v-bind:class="colorset"
+     v-bind:style="{ backgroundAttachment:styles.backgroundAttachment, paddingTop: styles.paddingTop + 'px', paddingBottom: styles.paddingBottom + 'px', paddingRight: styles.paddingRight + 'px', paddingLeft: styles.paddingLeft + 'px', backgroundImage: 'url(' + styles.backgroundImage + ')', backgroundRepeat: styles.backgroundRepeat, backgroundPosition: styles.backgroundPosition }"
+     v-settings="{ title: 'Text <span class=\'\ibloks-chevron-right\'\></span> Heading' }"
+>
+    <div class="bloks__block-content bloks__block-boxed">
+        <div class="container-fluid">
+            <bloks-editor :content.sync="html" :header="true" :list="true" :color="true" :align="true"></bloks-editor>
+        </div>
+    </div>
+</div>

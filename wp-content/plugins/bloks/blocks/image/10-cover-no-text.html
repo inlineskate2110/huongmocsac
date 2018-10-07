@@ -1,0 +1,28 @@
+<!--@name Only image @-->
+<!--@screenshot assets/images/builder/blocks/cover/cover-image.png @-->
+<!--@vars
+{
+    "title": "Cover only image",
+    "backdrop": "rgba(255, 255, 255)",
+    "media": {
+            "type": "image",
+            "url": "http://bloks.co/demo_images/Images/01-Image-Cover-No-Text-10.jpg",
+            "allowvideo": true,
+            "volume": "0",
+            "autoplay": true
+        }
+}
+@-->
+<div v-settings="{ title: 'Images <span class=\'\ibloks-chevron-right\'\></span> Only image', colorpicker: 'backdrop'}"
+     v-bind:style="{ backgroundAttachment:styles.backgroundAttachment, paddingTop: styles.paddingTop + 'px', paddingBottom: styles.paddingBottom + 'px', paddingRight: styles.paddingRight + 'px', paddingLeft: styles.paddingLeft + 'px', backgroundImage: 'url(' + styles.backgroundImage + ')', backgroundRepeat: styles.backgroundRepeat, backgroundPosition: styles.backgroundPosition }"
+     class="bloks__block">
+    <div class="bloks__block-content">
+        <bloks-media :title.sync="title" :type.sync="media.type" :backdrop.sync="backdrop" :src.sync="media.url"
+                     :autoplay.sync="media.autoplay"
+                     :settings="{ volume: media.volume, controls: false, browser: '.cover-background' }"
+                     :class="cover-background">
+            <div class="bloks__block-cover-content" slot="before-content">
+            </div>
+        </bloks-media>
+    </div>
+</div>

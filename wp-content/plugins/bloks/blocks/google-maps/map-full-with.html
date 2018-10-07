@@ -1,0 +1,42 @@
+<!--@name Google map full width @-->
+<!--@screenshot assets/images/builder/blocks/google-map/map1.png @-->
+<!--@address
+[
+    {"title": "Chicago", "icon": "http://bloks.co/demo_images/marker.png"},
+    {"title": "Chicago, symphony center", "icon": ""}
+]
+@-->
+<!--@styleMap
+[
+
+]
+@-->
+<!--@vars
+{
+    "classmap": "map-preview",
+    "styles": {
+        "classContainer": "container-fullwidth",
+        "backgroundImage": ""
+    },
+    "colorsets": {
+        "dark": {
+            "styles.backgroundColor": "rgba(0, 0, 0, 0.6)"
+        },
+        "none": {
+            "styles.backgroundColor": "rgba(255, 255, 255, 0.6)"
+        }
+    }
+}
+@-->
+
+<div v-bind:class="colorset"
+     v-settings="{ title: 'Google Maps <span class=\'\ibloks-chevron-right\'\></span> Full Width', map: {sync: 'address', class: classmap, custommap: styleMap}}"
+     class="bloks__block bloks-google-map"
+     v-bind:style="{ backgroundAttachment:styles.backgroundAttachment, paddingTop: styles.paddingTop + 'px', paddingBottom: styles.paddingBottom + 'px', paddingRight: styles.paddingRight + 'px', paddingLeft: styles.paddingLeft + 'px', backgroundImage: 'url(' + styles.backgroundImage + ')', backgroundRepeat: styles.backgroundRepeat, backgroundPosition: styles.backgroundPosition }"
+>
+    <div class="bloks__block-content" v-bind:class="styles.classContainer">
+        <div v-googlemap="classmap" class="map-row" >
+            <div id="{{classmap}}_{{id}}" class="loader-map {{classmap}}"></div>
+        </div>
+    </div>
+</div>

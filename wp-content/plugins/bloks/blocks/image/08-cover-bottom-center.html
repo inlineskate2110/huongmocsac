@@ -1,0 +1,59 @@
+<!--@name Cover Bottom Center @-->
+<!--@screenshot assets/images/builder/blocks/cover/bot-center.png @-->
+<!--@vars
+{
+    "title": "Cover Bottom Center",
+    "header": "THE CITY AT NIGHT",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quam purus, eleifend in neque a, pellentesque facilisis sem. Pellentesque sed tempor nisl. Praesent faucibus sit amet est in",
+    "button": {
+        "text": "Read more",
+        "align": "bloks__button-center",
+        "size": "bloks__button-medium",
+        "href": "#"
+    },
+    "backdrop": "rgba(255, 255, 255, 0.6)",
+    "media": {
+            "type": "image",
+            "url": "http://bloks.co/demo_images/Images/01-Image-Cover-Text-Bottom-Center-07.jpg",
+            "allowvideo": true,
+            "volume": "0",
+            "autoplay": true
+        },
+    "position": {
+        "header": true,
+        "description": true,
+        "button": true,
+        "class": "bloks__position-bottom-center",
+        "buttonalign":"bloks__button-center"
+    },
+    "colorset": "bloks__colorset-dark",
+    "colorsets": {
+        "dark": {
+            "backdrop": "rgba(0, 0, 0, 0.6)"
+        },
+        "none": {
+            "backdrop": "rgba(255, 255, 255, 0.6)"
+        }
+    }
+}
+@-->
+<div v-bind:class="colorset"
+     v-settings="{ title: 'Cover <span class=\'\ibloks-chevron-right\'\></span> Cover Bottom Center', position: 'position', colorpicker: 'backdrop'}"
+     v-bind:style="{ backgroundAttachment:styles.backgroundAttachment, paddingTop: styles.paddingTop + 'px', paddingBottom: styles.paddingBottom + 'px', paddingRight: styles.paddingRight + 'px', paddingLeft: styles.paddingLeft + 'px', backgroundImage: 'url(' + styles.backgroundImage + ')', backgroundRepeat: styles.backgroundRepeat, backgroundPosition: styles.backgroundPosition }"
+     class="bloks__block bloks__block-image bloks__cover-botton-center">
+    <div class="bloks__block-cover bloks__block-content" v-bind:class="position.class">
+        <bloks-media :title.sync="title" :type.sync="media.type" :backdrop.sync="backdrop" :src.sync="media.url"
+                     :autoplay.sync="media.autoplay"
+                     :settings="{ volume: media.volume, controls: false }"
+                     :class="cover-background">
+            <div class="bloks__block-cover-content" slot="before-content">
+                <bloks-editor v-if="position.header" :content.sync="header" :header="true" :list="true" :color="true" :align="true"
+                              class="bloks__block-cover-header" placeholder="Your title here"></bloks-editor>
+                <bloks-editor v-if="position.description" :content.sync="description" :list="true" :color="true" :align="true"
+                              class="bloks__block-cover-description"></bloks-editor>
+                <bloks-button v-if="position.button" :href.sync="button.href" :title.sync="button.text"
+                              :align.sync="position.buttonalign" :size.sync="button.size"></bloks-button>
+            </div>
+        </bloks-media>
+    </div>
+</div>

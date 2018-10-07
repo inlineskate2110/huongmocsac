@@ -1,0 +1,132 @@
+<!--@name Testimonial @-->
+<!--@screenshot assets/images/builder/blocks/testimonial/testimonial.png @-->
+<!--@styles
+{
+    "paddingTop": 100,
+    "paddingBottom": 100,
+    "backgroundImage": ""
+}
+@-->
+<!--@header
+{
+    "title": "<h2>Testimonial</h2>"
+}
+@-->
+<!--@vars
+{
+    "title": "Testimonial",
+    "imagedefault": "http://bloks.co/demo_images/image-default.png",
+    "data": [
+        {
+            "title": "Testimonial 1",
+            "url": "http://bloks.co/demo_images/Testimonial/lovely-girl-smile.jpg",
+            "alt": "testimonial",
+            "subtitle": "<h3>From Customers & Friends</h3>",
+            "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus orci lectus, gravida id dolor lacinia, volutpat ultricies dui. Morbi dignissim luctus ipsum, eget pulvinar lorem maximus id. In hac habitasse platea dictumst. Nunc commodo laoreet enim quis dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec ornare dolor eu nisi facilisis, a sagittis ligula blandit. Nam mollis, est ut pretium eleifend, nibh quam finibus erat, in fermentum magna metus a diam. Cras eleifend lobortis mattis. Nam hendrerit tortor vel tristique tincidunt. Ut mi risus, eleifend.</p>",
+            "provider": "<p>Simon brown - Food Magazine</p>",
+            "button": "More Info",
+            "link": "#",
+            "type": "image"
+        },
+        {
+            "title": "Testimonial 2",
+            "url": "http://bloks.co/demo_images/Testimonial/lovely-girl-smile.jpg",
+            "alt": "testimonial",
+            "subtitle": "<h3>From Customers & Friends</h3>",
+            "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus orci lectus, gravida id dolor lacinia, volutpat ultricies dui. Morbi dignissim luctus ipsum, eget pulvinar lorem maximus id. In hac habitasse platea dictumst. Nunc commodo laoreet enim quis dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec ornare dolor eu nisi facilisis, a sagittis ligula blandit. Nam mollis, est ut pretium eleifend, nibh quam finibus erat, in fermentum magna metus a diam. Cras eleifend lobortis mattis. Nam hendrerit tortor vel tristique tincidunt. Ut mi risus, eleifend.</p>",
+            "provider": "<p>Simon brown - Food Magazine</p>",
+            "button": "More Info",
+            "link": "#",
+            "type": "image"
+        },
+        {
+            "title": "Testimonial 3",
+            "url": "http://bloks.co/demo_images/Testimonial/lovely-girl-smile.jpg",
+            "alt": "testimonial",
+            "subtitle": "<h3>From Customers & Friends</h3>",
+            "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus orci lectus, gravida id dolor lacinia, volutpat ultricies dui. Morbi dignissim luctus ipsum, eget pulvinar lorem maximus id. In hac habitasse platea dictumst. Nunc commodo laoreet enim quis dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec ornare dolor eu nisi facilisis, a sagittis ligula blandit. Nam mollis, est ut pretium eleifend, nibh quam finibus erat, in fermentum magna metus a diam. Cras eleifend lobortis mattis. Nam hendrerit tortor vel tristique tincidunt. Ut mi risus, eleifend.</p>",
+            "provider": "<p>Simon brown - Food Magazine</p>",
+            "button": "More Info",
+            "link": "#",
+            "type": "image"
+        }
+    ]
+}
+@-->
+<!--@colorsets
+{
+    "dark": {
+        "styles.backgroundColor": "rgba(0, 0, 0, 0.6)"
+    },
+    "none": {
+        "styles.backgroundColor": "rgba(255, 255, 255, 0.6)"
+    }
+}
+@-->
+<!--@button
+{
+    "size": "bloks__button-medium",
+    "align": "bloks__button-center"
+}
+@-->
+<div v-bind:class="colorset"
+     v-settings="{ title: 'Testimonial <span class=\'\ibloks-chevron-right\'\></span> Testimonial', collection: {sync: 'data', title: title, imagedefault: imagedefault}  }"
+     v-bind:style="{ backgroundAttachment:styles.backgroundAttachment, paddingTop: styles.paddingTop + 'px', paddingBottom: styles.paddingBottom + 'px', paddingRight: styles.paddingRight + 'px', paddingLeft: styles.paddingLeft + 'px', backgroundImage: 'url(' + styles.backgroundImage + ')', backgroundRepeat: styles.backgroundRepeat, backgroundPosition: styles.backgroundPosition }" class="bloks__block bloks-testimonial bloks-testimonial-slider">
+    <div class="bloks-wrap-container">
+        <div v-bind:class="styles.classContainer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="ql-align-center title">
+                        <bloks-editor :content.sync="header.title" :list="true" :color="true" placeholder="Enter title!"></bloks-editor>
+                    </div>
+                    <div id="carousel-testimonoal-generic-{{_uid}}" class="carousel slide" data-ride="carousel" data-interval="5000">
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <!--only bind data when slide is active -->
+                            <div v-for="(index, item) in data" :class="['item ',{'active':index == 0 ? true: false}]" class="ql-align-center" data-index="{{index}}" >
+                                <template v-if="data[index]">
+                                    <div class="testimonial-image">
+                                        <bloks-media :src.sync="data[index].url" :settings="{ allow: ['image'], link: false }"></bloks-media>
+                                    </div>
+                                    <div class="filter">
+                                        <div class="subtitle">
+                                            <bloks-editor :content.sync="data[index].subtitle" :list="true" :color="true" placeholder="Enter title!"></bloks-editor>
+                                        </div>
+                                        <div class="description">
+                                            <div class="description-content">
+                                                <span class="ibloks-quotation-on"></span>
+                                                <bloks-editor :content.sync="data[index].description" :list="true" :color="true" placeholder="Enter title!"></bloks-editor>
+                                                <span class="ibloks-quotation-below"></span>
+                                                <div class="testimonial-button">
+                                                    <bloks-button :href.sync="data[index].link" :title.sync="data[index].button" :align.sync="button.align" :size.sync="button.size"></bloks-button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <template v-for="(index, item) in data">
+                                <template v-if="data[index]">
+                                    <li data-target="#carousel-testimonoal-generic-{{_uid}}" data-slide-to="{{index}}" class="carousel-item" v-bind:class="{ active: index === 0 } "></li>
+                                </template>
+                            </template>
+                        </ol>
+
+                        <!-- Controls -->
+                        <a class="carousel-control-prev" href="#carousel-testimonoal-generic-{{_uid}}" role="button" data-slide="prev">
+                            <span class="ibloks-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carousel-testimonoal-generic-{{_uid}}" role="button" data-slide="next">
+                            <span class="ibloks-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+<!--@name Grid Media @-->
+<!--@screenshot assets/images/builder/blocks/feature/feature2.png @-->
+<!--@vars
+{
+    "settings": {
+        "showtitle": true,
+        "showdescription": true,
+        "showsubtitle": true,
+        "showbutton": true
+    },
+    "link": {
+        "link": "#",
+        "target": "_self",
+        "showtab": false
+    },
+    "styles": {
+        "paddingTop": 100,
+        "paddingBottom": 100
+    },
+    "title": "EGD Media",
+    "type": "youtube",
+    "href": "http://egd.vn",
+    "backdrop": "",
+    "volume": 5,
+    "src": "PJq_p1b-Zbc",
+    "autoplay": false
+}
+@-->
+
+<!--@grid
+[
+    {
+        "type": "media",
+        "isgrid": "1"
+    },
+    {
+        "type": "text",
+        "link": "#",
+        "target": "_self",
+        "title": "<h2>Our Works In Video</h2>",
+        "subtitle": "<h3>Phasellus quam purus, eleifend in neque.</h3>",
+        "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quam purus, eleifend in neque a, pellentesque facilisis sem. Pellentesque sed tempor nisl. Praesent faucibus sit amet est in ultrices. Proin luctus nisi justo, non dictum nibh malesuada vitae. Nunc ac vestibulum odio. Vivamus suscipit bibendum nisl, eget condimentum augue mattis vel.</p>",
+        "button": "Read more",
+        "isgrid": "1"
+    }
+]
+@-->
+<!--@colorsets
+{
+    "dark": {
+        "styles.backgroundColor": "rgba(0, 0, 0, 0.6)"
+    },
+    "none": {
+        "styles.backgroundColor": "rgba(255, 255, 255, 0.6)"
+    }
+}
+@-->
+<!--@button
+{
+    "size": "bloks__button-medium"
+}
+@-->
+<div v-bind:class="colorset" class="bloks__block bloks__block-grid"
+     v-bind:style="{ backgroundAttachment:styles.backgroundAttachment, paddingTop: styles.paddingTop + 'px', paddingBottom: styles.paddingBottom + 'px', paddingRight: styles.paddingRight + 'px', paddingLeft: styles.paddingLeft + 'px', backgroundImage: 'url(' + styles.backgroundImage + ')', backgroundRepeat: styles.backgroundRepeat, backgroundPosition: styles.backgroundPosition}"
+     v-settings="{ title: 'Grid <span class=\'\ibloks-chevron-right\'\></span> Media', colorpicker: 'backdrop', grid: 'settings'}">
+    <div class="bloks-wrap-container">
+        <div v-bind:class="styles.classContainer" class="bloks__block-boxed">
+            <div class="container-fluid">
+                <div class="row grid-content">
+                    <div class="col-md-6 grid-cols" v-for="(n, item) in grid">
+                        <div class="grid-item" v-col>
+                            <div class="view-media feature-tool">
+                                <div v-show="grid[n].type == 'media'" class="show-media">
+                                    <bloks-media :title.sync="title" :href.sync="href" :type.sync="type"
+                                                 :backdrop="backdrop" :src.sync="src"
+                                                 :settings="{ volume: volume, autoplay: autoplay }"></bloks-media>
+                                </div>
+                                <div v-if="grid[n].type == 'text'">
+                                    <div v-if="settings.showtitle" data-element="title" class="title">
+                                        <bloks-editor :content.sync="grid[n].title" :header="true" :list="false"
+                                                      :color="true" :align="true" placeholder="Please enter your title here!"></bloks-editor>
+                                    </div>
+                                    <div v-if="settings.showsubtitle" data-element="subtitle" class="subtitle">
+                                        <bloks-editor :content.sync="grid[n].subtitle" :header="true" :list="false"
+                                                      :color="true" :align="true" placeholder="Please enter your title here!"></bloks-editor>
+                                    </div>
+                                    <div v-if="settings.showdescription" data-element="description" class="description">
+                                        <bloks-editor :content.sync="grid[n].description" :header="false" :list="true"
+                                                      :color="true" :align="true" placeholder="Please enter your title here!"></bloks-editor>
+                                    </div>
+                                    <bloks-button v-if="grid[n].button !== undefined && settings.showbutton"
+                                                  :href.sync="grid[n].link" :title.sync="grid[n].button"
+                                                  :align.sync="button.align" :size.sync="button.size"></bloks-button>
+                                </div>
+                                <input type="hidden" value="{{n}}" name="index"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

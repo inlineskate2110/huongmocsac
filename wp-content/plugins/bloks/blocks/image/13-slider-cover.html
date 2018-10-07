@@ -1,0 +1,110 @@
+<!--@name Slide Cover @-->
+<!--@screenshot assets/images/builder/blocks/cover/cover2.png @-->
+
+<!--@vars
+{
+    "title": "Slide",
+    "imagedefault":"http://bloks.co/demo_images/Images/02-UX-UI-Defaul-Slide-Cover-Add-New.jpg",
+    "slides": [
+        {
+            "title": "Slider 01",
+            "type": "image",
+            "url": "http://bloks.co/demo_images/Images/02-Slide-Cover-01.jpg",
+            "header": "WHAT IS YOUR DREAM?",
+            "description": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quam purus, eleifend in neque a, pellentesque facilisis sem. Pellentesque sed tempor nisl. Praesent faucibus sit amet est in ultrices. Proin luctus nisi justo, non dictum nibh malesuada vitae. Nunc ac vestibulum odio.",
+            "buttontext": "Lets Talk",
+            "buttonalign": "bloks__button-center",
+            "buttonsize": "bloks__button-medium",
+            "buttonhref":"egd.vn",
+            "volume": "0",
+            "autoplay": true
+        },
+        {
+            "title": "Slider 02",
+            "type": "image",
+            "url": "http://bloks.co/demo_images/Images/02-Slide-Cover-02.jpg",
+            "header": "WHAT IS YOUR DREAM?",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quam purus, eleifend in neque a, pellentesque facilisis sem. Pellentesque sed tempor nisl. Praesent faucibus sit amet est in ultrices. Proin luctus nisi justo, non dictum nibh malesuada vitae. Nunc ac vestibulum odio.",
+            "buttontext": "Lets Talk",
+            "buttonalign": "bloks__button-center",
+            "buttonsize": "bloks__button-medium",
+            "buttonhref":"egd.vn",
+            "volume": "0",
+            "autoplay": true
+        },
+        {
+            "title": "Slider 03",
+            "type": "image",
+            "url": "http://bloks.co/demo_images/Images/02-Slide-Cover-03.jpg",
+            "header": "WHAT IS YOUR DREAM?",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quam purus, eleifend in neque a, pellentesque facilisis sem. Pellentesque sed tempor nisl. Praesent faucibus sit amet est in ultrices. Proin luctus nisi justo, non dictum nibh malesuada vitae. Nunc ac vestibulum odio.",
+            "buttontext": "Lets Talk",
+            "buttonalign": "bloks__button-center",
+            "buttonsize": "bloks__button-medium",
+            "buttonhref":"egd.vn",
+            "volume": "0",
+            "autoplay": true
+        }
+    ],
+    "position":
+    {
+        "header": true,
+        "description": true,
+        "button": false,
+        "class": "bloks__position-middle-center"
+    },
+    "colorset": "bloks__colorset-light",
+    "colorsets": {
+        "dark": {
+            "backdrop": "rgba(0, 0, 0, 0.6)"
+        },
+        "none": {
+            "backdrop": "rgba(255, 255, 255, 0.6)"
+        }
+    },
+    "backdrop": "rgba(255, 255, 255, 0.6)"
+}
+@-->
+<div v-bind:class="colorset"
+     v-settings="{title: 'Cover <span class=\'\ibloks-chevron-right\'\></span> Slider Cover', position: 'position',colorpicker: 'backdrop', collection: {sync: 'slides', title: title, imagedefault: imagedefault} }"
+     v-bind:style="{ backgroundAttachment:styles.backgroundAttachment, paddingTop: styles.paddingTop + 'px', paddingBottom: styles.paddingBottom + 'px', paddingRight: styles.paddingRight + 'px', paddingLeft: styles.paddingLeft + 'px', backgroundImage: 'url(' + styles.backgroundImage + ')'}"
+     class="bloks__block bloks__block-image bloks__block-slider-cover">
+    <div v-bind:class="position.class">
+        <div id="carousel-cover-slider-generic-{{_uid}}" class="carousel slide" data-ride="carousel">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <template v-for="(index, item) in slides">
+                    <!--only bind data when slide is active -->
+                    <div :class="['item ',{'active':index == 0 ? true: false}]" class="slider-image" data-index="{{index}}" >
+                        <div class="bloks__block-cover bloks__block-content" v-bind:class="position.class" data-element="srcbackground">
+                            <bloks-media  :title.sync="slides[index].title" :type.sync="slides[index].type" :backdrop="backdrop" :src.sync="slides[index].url" :autoplay.sync="slides[index].autoplay" :settings="{ volume: slides[index].volume, controls: false}">
+                                <div class="bloks__block-cover-content" slot="before-content">
+                                    <div data-index="{{index}}">
+                                        <bloks-editor v-if="position.header" :content.sync="slides[index].header" :header="true" :list="true" :color="true" :align="true" class="cover-header" ></bloks-editor>
+                                        <bloks-editor v-if="position.description" :content.sync="slides[index].description" :header="true" :list="true" :color="true" :align="true" class="cover-description" ></bloks-editor>
+                                        <bloks-button :href.sync="slides[index].buttonhref" v-show="position.button" :title.sync="slides[index].button" :align.sync="slides[index].buttonalign" :style.sync="slides[index].buttonstyle" :size.sync="slides[index].buttonsize"></bloks-button>
+                                    </div>
+                                </div>
+                            </bloks-media>
+                        </div>
+                    </div>
+                </template>
+            </div>
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <template v-for="(index, item) in slides">
+                        <li data-target="#carousel-cover-slider-generic-{{_uid}}" data-slide-to="{{index}}" v-bind:class="{ active: index === 0 }" class="carousel-item"></li>
+                </template>
+            </ol>
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-cover-slider-generic-{{_uid}}" role="button" data-slide="prev">
+                <span class="ibloks-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-cover-slider-generic-{{_uid}}" role="button" data-slide="next">
+                <span class="ibloks-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>

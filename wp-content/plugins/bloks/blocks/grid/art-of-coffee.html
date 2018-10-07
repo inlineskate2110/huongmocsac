@@ -1,0 +1,98 @@
+<!--@name Art Of Coffee @-->
+<!--@screenshot assets/images/builder/blocks/grid/art-of-coffee.png @-->
+<!--@styles
+{
+    "paddingTop": 150,
+    "paddingBottom": 150
+}
+@-->
+<!--@settings
+{
+    "showtitle": true,
+    "showdescription": true,
+    "showmedia": true,
+    "showsubtitle": true,
+    "showbutton": true,
+    "maxheight": 600,
+    "minheight": 200,
+    "height": 460
+}
+@-->
+<!--@grid
+[
+    {
+        "url": "http://bloks.co/demo_images/Grid/1.jpg",
+        "alt": "bloks image",
+        "isgrid": "1"
+    },
+    {
+        "url": "http://bloks.co/demo_images/Grid/2.jpg",
+        "alt": "bloks image",
+        "isgrid": "1"
+    },
+    {
+        "link": "#",
+        "target": "_self",
+        "title": "<h2>ART OF COFFEE</h2>",
+        "subtitle": "<h3>Welcome To Our Restaurant</h3>",
+        "description": "<p>Lorem ipsum dolor nisi is sit amet, consectetur adipiscing elit, sed is nisi do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, nisi is veniam nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in var voluptate velit esse cillum nisi.Duis aute irure dolor in ivar reprehenderit.</p>",
+        "button": "Read more",
+        "isgrid": "1"
+    }
+]
+@-->
+<!--@colorsets
+{
+    "dark": {
+        "styles.backgroundColor": "rgba(0, 0, 0, 0.6)"
+    },
+    "none": {
+        "styles.backgroundColor": "rgba(255, 255, 255, 0.6)"
+    }
+}
+@-->
+<!--@button
+{
+    "size": "bloks__button-medium",
+    "align": "bloks__button-center"
+}
+@-->
+<div v-settings="{title: 'Grid <span class=\'\ibloks-chevron-right\'\></span> Art of Coffee', grid: 'settings'}" v-bind:class="colorset"
+     v-bind:style="{ backgroundAttachment:styles.backgroundAttachment, paddingTop: styles.paddingTop + 'px', paddingBottom: styles.paddingBottom + 'px', paddingRight: styles.paddingRight + 'px', paddingLeft: styles.paddingLeft + 'px', backgroundImage: 'url(' + styles.backgroundImage + ')', backgroundRepeat: styles.backgroundRepeat, backgroundPosition: styles.backgroundPosition }"
+     class="bloks__block bloks__block-grid">
+    <div class="bloks-wrap-container">
+        <div v-bind:class="styles.classContainer" class="bloks__block-boxed">
+            <div class="container-fluid">
+                <div class="row grid-content intro-grid-content">
+                    <div v-bind:class="{ 'col-sm-12 col-md-pull-4': n == 2, 'col-sm-6': n != 2, 'col-md-push-4': n == 1 }" class="col-md-4 grid-cols" v-for="(n, item) in grid">
+                        <div class="grid-item" v-col>
+                            <template v-if="grid[n].url !== undefined">
+                                <div class="wrap-image" v-show="settings.showmedia" v-bind:style="{ height: settings.height + 'px' }">
+                                    <bloks-media :src.sync="grid[n].url" :settings="{ allow: ['image'] }"></bloks-media>
+                                </div>
+                            </template>
+
+                            <div class="column_attr ql-align-center">
+                                <div class="text_intextimageszone">
+                                    <div class="head_title">
+                                        <div v-if="grid[n].title != undefined && settings.showtitle" data-element="title" class="title" >
+                                            <bloks-editor :content.sync="grid[n].title" :list="true" :color="true" :align="true" placeholder="Enter title!"></bloks-editor>
+                                        </div>
+                                        <div v-if="grid[n].subtitle !== undefined && settings.showsubtitle" data-element="subtitle" class="subtitle">
+                                            <bloks-editor :content.sync="grid[n].subtitle" :list="true" :color="true" :align="true" placeholder="Please enter your text here!"></bloks-editor>
+                                        </div>
+                                    </div>
+                                    <div v-if="grid[n].description !== undefined && settings.showdescription" data-element="description" class="description">
+                                        <bloks-editor :content.sync="grid[n].description" :list="true" :color="true" :align="true"></bloks-editor>
+                                    </div>
+                                    <bloks-button v-if="grid[n].button !== undefined && settings.showbutton" :href.sync="grid[n].link" :title.sync="grid[n].button" :align.sync="button.align" :size.sync="button.size"></bloks-button>
+                                </div>
+                            </div>
+                            <input type="hidden" value="{{n}}" name="index" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

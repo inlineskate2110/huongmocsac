@@ -1,0 +1,94 @@
+<!--@name Google map with contact@-->
+<!--@screenshot assets/images/builder/blocks/google-map/map2.png @-->
+<!--@address
+[
+    {"title": "London", "icon": "http://bloks.co/demo_images/marker.png"}
+]
+@-->
+<!--@styleMap
+[]
+@-->
+<!--@vars
+{
+    "classmap": "map-preview",
+    "styles": {
+        "classContainer": "container-fullwidth",
+        "backgroundImage": "",
+        "paddingTop": 100,
+        "paddingBottom": 100,
+        "paddingLeft": 40,
+        "paddingRight": 40,
+        "backgroundColor": "rgba(255,255,255,0.67)"
+    },
+    "map": {
+        "header": "<h2>Contact Us</h2>",
+        "subheader": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dictum magna vitae enim maximus vulputate.</p>"
+    },
+    "contact": {
+        "info": "<p><strong>Contact Infomartion</strong> </p>",
+        "title": "<p><strong>Address:</strong></p>",
+        "address": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dictum magna vitae enim maximus vulputate. Nam egestas efficitur urna, eu iaculis dui aliquet vel. </p>",
+        "phone": "<p><strong>Phone: </strong>0123456789  -  0123456789</p>",
+        "fax": "<p><strong>Fax: </strong>0123456789  -  0123456789</p>",
+        "email": "<p><strong>Email: </strong>support@xfox.co</p>"
+    },
+    "settings": {
+        "header": true,
+        "content": true
+    },
+    "colorsets": {
+        "dark": {
+            "styles.backgroundColor": "rgba(0, 0, 0, 0.6)"
+        },
+        "none": {
+            "styles.backgroundColor": "rgba(255, 255, 255, 0.6)"
+        }
+    }
+}
+@-->
+<div v-bind:class="colorset"
+     v-settings="{ title: 'Google Maps <span class=\'\ibloks-chevron-right\'\></span> With Contact', map: {sync: 'address', class: classmap, custommap: styleMap}}"
+     class="bloks__block bloks-google-map map-with-text"
+     v-bind:style="{ backgroundAttachment:styles.backgroundAttachment, paddingTop: styles.paddingTop + 'px', paddingBottom: styles.paddingBottom + 'px', paddingRight: styles.paddingRight + 'px', paddingLeft: styles.paddingLeft + 'px', backgroundImage: 'url(' + styles.backgroundImage + ')', backgroundRepeat: styles.backgroundRepeat, backgroundPosition: styles.backgroundPosition }"
+>
+    <div class="bloks__block-content bloks__block-boxed" v-bind:class="styles.classContainer">
+        <div class="contact-header" v-if="settings.header">
+            <div class="ql-align-center">
+                <bloks-editor :content.sync="map.header" :header="true" :list="false" :color="true"
+                              :align="true"></bloks-editor>
+            </div>
+        </div>
+        <div class="contact-sub-header" v-if="settings.content">
+            <div class="ql-align-center">
+                <bloks-editor :content.sync="map.subheader" :header="false" :list="true" :color="true"
+                              :align="true"></bloks-editor>
+            </div>
+        </div>
+        <div v-googlemap="classmap" class="map-row">
+            <div id="{{classmap}}_{{id}}" class="loader-map col-md-6 {{classmap}}"></div>
+            <div class="contact-store col-md-6">
+
+                <bloks-editor :content.sync="contact.info" :header="true" :list="false" :color="true" :align="true"></bloks-editor>
+                <div class="contact-map contact-address">
+                    <i class='ibloks-address'></i>
+                    <bloks-editor :content.sync="contact.title" :header="true" :list="false" :color="true" :align="true"></bloks-editor>
+                </div>
+                <div class="contact-map sub-contact-address">
+                    <bloks-editor :content.sync="contact.address" :header="true" :list="false" :color="true" :align="true"></bloks-editor>
+                </div>
+                <div class="contact-map contact-phone">
+                    <i class='ibloks-phone'></i>
+                    <bloks-editor :content.sync="contact.phone" :header="true" :list="false" :color="true" :align="true"></bloks-editor>
+                </div>
+                <div class="contact-map contact-phone">
+                    <i class='ibloks-fax'></i>
+                    <bloks-editor :content.sync="contact.fax" :header="true" :list="false" :color="true" :align="true"></bloks-editor>
+                </div>
+                <div class="contact-map contact-email">
+                    <i class='ibloks-email'></i>
+                    <bloks-editor :content.sync="contact.email" :header="true" :list="false" :color="true" :align="true"></bloks-editor>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

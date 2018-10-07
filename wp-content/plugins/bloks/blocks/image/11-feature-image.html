@@ -1,0 +1,67 @@
+<!--@name Text outside @-->
+<!--@screenshot assets/images/builder/blocks/feature/feature1.png @-->
+<!--@vars
+{
+
+    "settings": {
+        "header": true,
+        "content": true
+    },
+    "link": {
+        "link": "#",
+        "target": "_self",
+        "showtab": false
+    },
+    "styles": {
+        "paddingTop": 100,
+        "paddingBottom": 100
+    },
+    "backdrop": "",
+    "title": "EGD Image",
+    "type": "image",
+    "href": "egd.vn",
+    "src": "http://bloks.co/demo_images/Images/03-Featured-Images.jpg",
+    "autoplay": false,
+    "volume": "5",
+    "newtab": false,
+    "colorsets": {
+        "dark": {
+            "styles.backgroundColor": "#4D4D4D"
+        },
+        "none": {
+            "styles.backgroundColor": "#FFFFFF"
+        }
+    },
+    "feature": {
+        "header": "<h2>Create a Beautiful wedding</h2>",
+        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, velit a facilisis dictum, risus velit sollicitudin nulla, a eleifend odio nisi id arcu. Proin fermentum gravida sagittis. Suspendisse et nulla in turpis pharetra ornare nec a libero. Duis ipsum dolor, pulvinar quis sodales sodales, finibus in odio.</p>"
+    }
+}
+@-->
+<div v-bind:class="colorset" class="bloks__bloks-feature"
+     v-bind:style="{ backgroundAttachment:styles.backgroundAttachment, paddingTop: styles.paddingTop + 'px', paddingBottom: styles.paddingBottom + 'px', paddingRight: styles.paddingRight + 'px', paddingLeft: styles.paddingLeft + 'px', backgroundImage: 'url(' + styles.backgroundImage + ')', backgroundRepeat: styles.backgroundRepeat, backgroundPosition: styles.backgroundPosition }"
+     v-settings="{ title: 'Images <span class=\'\ibloks-chevron-right\'\></span> Text outside', layout: 'settings', colorpicker: 'backdrop'}">
+    <div class="bloks__block-content bloks__block-boxed">
+        <!-- media -->
+        <bloks-media :autoplay.sync="autoplay" :title.sync="title" :href.sync="href" :type.sync="type"
+                     :backdrop="backdrop" :src.sync="src" :newtab.sync="newtab"
+                     :settings="{ volume: volume }"></bloks-media>
+        <!-- text -->
+        <div class="feature-description">
+            <div class="title-feature" v-if="settings.header">
+                <div class="ql-align-center">
+                    <bloks-editor :content.sync="feature.header" :header="true" :list="false" :color="true"
+                                  placeholder="Please enter Your title here!"
+                                  :align="true"></bloks-editor>
+                </div>
+            </div>
+            <div class="content-feature" v-if="settings.content">
+                <div class="ql-align-center">
+                    <bloks-editor :content.sync="feature.content" :header="false" :list="true" :color="true"
+                                  placeholder="Please enter Your title here!"
+                                  :align="true"></bloks-editor>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

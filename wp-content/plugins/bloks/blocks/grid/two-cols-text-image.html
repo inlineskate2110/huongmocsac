@@ -1,0 +1,87 @@
+<!--@name Two Cols Text Image @-->
+<!--@screenshot assets/images/builder/blocks/grid/grid_4.png @-->
+<!--@styles
+{
+    "paddingTop": 150,
+    "paddingBottom": 150
+}
+@-->
+<!--@settings
+{
+    "showtitle": true,
+    "showdescription": true,
+    "showmedia": true,
+    "showsubtitle": true,
+    "showbutton": true,
+    "maxheight": 700,
+    "minheight": 300,
+    "height": 360
+}
+@-->
+<!--@grid
+[
+    {
+        "url": "http://bloks.co/demo_images/Grid/10.jpg",
+        "alt": "bloks image",
+        "isgrid": "1"
+    },
+    {
+        "link": "#",
+        "target": "_self",
+        "title": "<h2>A happy day<h2>",
+        "subtitle": "<h3>In at molestie mi. Aenean suscipit</h3>",
+        "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In at molestie mi. Aenean suscipit, ante id sagittis vulputate, nibh libero mollis risus, id sodales augue est quis lorem. Sed vestibulum libero sit amet massa pulvinar maximus. Sed sit amet viverra quam, nec faucibus lectus. Sed facilisis, ipsum sed vulputate condimentum, quam justo mollis enim, sit amet congue justo turpis nec sem. Mauris mattis ultricies lectus faucibus pulvinar.</p>",
+        "button": "Read more",
+        "isgrid": "1"
+    }
+]
+@-->
+<!--@colorsets
+{
+    "dark": {
+        "styles.backgroundColor": "rgba(0, 0, 0, 0.6)"
+    },
+    "none": {
+        "styles.backgroundColor": "rgba(255, 255, 255, 0.6)"
+    }
+}
+@-->
+<!--@button
+{
+    "size": "bloks__button-medium"
+}
+@-->
+<div v-settings="{title: 'Grid <span class=\'\ibloks-chevron-right\'\></span> Two Cols Text Image', grid: 'settings'}" v-bind:class="colorset"
+     v-bind:style="{ backgroundAttachment:styles.backgroundAttachment, paddingTop: styles.paddingTop + 'px', paddingBottom: styles.paddingBottom + 'px', paddingRight: styles.paddingRight + 'px', paddingLeft: styles.paddingLeft + 'px', backgroundImage: 'url(' + styles.backgroundImage + ')', backgroundRepeat: styles.backgroundRepeat, backgroundPosition: styles.backgroundPosition }"
+     class="bloks__block bloks__block-grid">
+    <div class="bloks-wrap-container">
+        <div v-bind:class="styles.classContainer" class="bloks__block-boxed">
+            <div class="container-fluid">
+                <div class="row grid-content">
+                    <div class="col-md-12 grid-text-content">
+                        <div class="col-md-6 col-sm-12 col-xs-12 grid-cols" v-for="(n, item) in grid">
+                            <div class="grid-item" v-col>
+                                <template v-if="grid[n].url !== undefined">
+                                    <div class="wrap-image" v-show="settings.showmedia" v-bind:style="{ height: settings.height + 'px' }">
+                                        <bloks-media :src.sync="grid[n].url" :settings="{ allow: ['image'] }"></bloks-media>
+                                    </div>
+                                </template>
+                                <div v-if="grid[n].title != undefined && settings.showtitle" data-element="title" class="title">
+                                    <bloks-editor :content.sync="grid[n].title" :color="true" :align="true" placeholder="Please enter your title here!"></bloks-editor>
+                                </div>
+                                <div v-if="grid[n].subtitle !== undefined && settings.showsubtitle" data-element="title" class="subtitle">
+                                    <bloks-editor :content.sync="grid[n].subtitle" :color="true" :align="true" placeholder="Please enter your title here!"></bloks-editor>
+                                </div>
+                                <div v-if="grid[n].description !== undefined && settings.showdescription" data-element="description" class="description">
+                                    <bloks-editor :content.sync="grid[n].description" :color="true" :align="true" :list="true" placeholder="Please enter your text here!"></bloks-editor>
+                                </div>
+                                <bloks-button v-if="grid[n].button !== undefined && settings.showbutton" :href.sync="grid[n].link" :title.sync="grid[n].button" :align.sync="button.align" :size.sync="button.size"></bloks-button>
+                                <input type="hidden" value="{{n}}" name="index" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

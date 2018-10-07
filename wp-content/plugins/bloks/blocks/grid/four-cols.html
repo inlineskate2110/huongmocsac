@@ -1,0 +1,129 @@
+<!--@name Four Cols @-->
+<!--@screenshot assets/images/builder/blocks/grid/grid2.png @-->
+<!--@styles
+{
+    "paddingTop": 150,
+    "paddingBottom": 150
+}
+@-->
+<!--@settings
+{
+    "showtitle": true,
+    "showdescription": true,
+    "showmedia": true,
+    "showsubtitle": true,
+    "showsubdescription": true,
+    "showbutton": true,
+    "maxheight": 300,
+    "minheight": 50,
+    "height": 170
+}
+@-->
+<!--@header
+{
+    "title": "<h2>What's News Today!</h2>",
+    "description": "<p>Etiam porttitor mi id vulputate tempus. Vivamus tempus in lorem nec vulputate. Cras mattis tempor aliquam. Donec mollis rutrum mattis.</p>"
+}
+@-->
+<!--@grid
+[
+    {
+        "url": "http://bloks.co/demo_images/Grid/3.jpg",
+        "alt": "bloks image",
+        "link": "#",
+        "target": "_self",
+        "title": "<h3>What is Lorem Ipsum</h3>",
+        "subdescription": "<p>Lorem is its ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod varm tempor incididunt ut labore et dolore magna aliqua. Ut enim ad is minim veniam, quis nostrud mattis tempor is aliquam. </p>",
+        "button": "Read more...",
+        "isgrid": "1"
+    },
+    {
+        "url": "http://bloks.co/demo_images/Grid/4.jpg",
+        "alt": "bloks image",
+        "link": "#",
+        "target": "_self",
+        "title": "<h3>Why do we use it</h3>",
+        "subdescription": "<p>Lorem is its ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod varm tempor incididunt ut labore et dolore magna aliqua. Ut enim ad is minim veniam, quis nostrud mattis tempor is aliquam. </p>",
+        "button": "Read more...",
+        "isgrid": "1"
+    },
+    {
+        "url": "http://bloks.co/demo_images/Grid/5.jpg",
+        "alt": "bloks image",
+        "link": "#",
+        "target": "_self",
+        "title": "<h3>Where does it come</h3>",
+        "subdescription": "<p>Lorem is its ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod varm tempor incididunt ut labore et dolore magna aliqua. Ut enim ad is minim veniam, quis nostrud mattis tempor is aliquam. </p>",
+        "button": "Read more...",
+        "isgrid": "1"
+    },
+    {
+        "url": "http://bloks.co/demo_images/Grid/6.jpg",
+        "alt": "bloks image",
+        "link": "#",
+        "target": "_self",
+        "title": "<h3>Where can I get some</h3>",
+        "subdescription": "<p>Lorem is its ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod varm tempor incididunt ut labore et dolore magna aliqua. Ut enim ad is minim veniam, quis nostrud mattis tempor is aliquam. </p>",
+        "button": "Read more...",
+        "isgrid": "1"
+    }
+]
+@-->
+<!--@colorsets
+{
+    "dark": {
+        "styles.backgroundColor": "rgba(0, 0, 0, 0.6)"
+    },
+    "none": {
+        "styles.backgroundColor": "rgba(255, 255, 255, 0.6)"
+    }
+}
+@-->
+<!--@button
+{
+    "size": "bloks__button-medium"
+}
+@-->
+<div v-settings="{title: 'Grid <span class=\'\ibloks-chevron-right\'\></span> Four Cols', grid: 'settings'}" v-bind:class="colorset"
+     v-bind:style="{ backgroundAttachment:styles.backgroundAttachment, paddingTop: styles.paddingTop + 'px', paddingBottom: styles.paddingBottom + 'px', paddingRight: styles.paddingRight + 'px', paddingLeft: styles.paddingLeft + 'px', backgroundImage: 'url(' + styles.backgroundImage + ')', backgroundRepeat: styles.backgroundRepeat, backgroundPosition: styles.backgroundPosition }"
+     class="bloks__block bloks__block-grid bloks-grid4">
+    <div class="bloks-wrap-container">
+        <div v-bind:class="styles.classContainer" class="bloks__block-boxed">
+            <div class="container-fluid">
+                <div class="row grid-content">
+                    <div class="title col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+                        <template v-if="settings.showtitle">
+                            <div class="ql-align-center">
+                                <bloks-editor :content.sync="header.title" :list="true" :color="true" :align="true" placeholder="Please enter your title here!"></bloks-editor>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="description col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+                        <template v-if="settings.showdescription">
+                            <div class="ql-align-center">
+                                <bloks-editor :content.sync="header.description" :color="true" :align="true" :list="true" placeholder="Please enter your text here!"></bloks-editor>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="col-md-12 grid-text-content">
+                        <div class="col-md-3 col-sm-6 col-xs-12 grid-cols" v-for="(n, item) in grid">
+                            <div class="grid-item" v-col>
+                                <div class="wrap-image" v-show="settings.showmedia" v-bind:style="{ height: settings.height + 'px' }">
+                                    <bloks-media :src.sync="grid[n].url" :href.sync="grid[n].link" :settings="{ allow: ['image'] }"></bloks-media>
+                                </div>
+                                <div v-if="settings.showsubtitle" data-element="title" class="subtitle">
+                                    <bloks-editor :content.sync="grid[n].title" :list="true" :color="true" :align="true" placeholder="Enter title!"></bloks-editor>
+                                </div>
+                                <div v-if="settings.showsubdescription" data-element="subdescription">
+                                    <bloks-editor :content.sync="grid[n].subdescription" :list="true" :color="true" :align="true"></bloks-editor>
+                                </div>
+                                <bloks-button v-if="grid[n].button !== undefined && settings.showbutton" :href.sync="grid[n].link" :title.sync="grid[n].button" :align.sync="button.align" :size.sync="button.size"></bloks-button>
+                                <input type="hidden" value="{{n}}" name="index" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
