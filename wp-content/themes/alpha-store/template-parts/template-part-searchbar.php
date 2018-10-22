@@ -6,7 +6,7 @@
 <!--    </div>-->
 	<div class="logo-huongmocsac" style="text-align: center">
 		<div class="item" style="width: 45%; margin-left: 50px">
-			<a href="#"><img src="http://huongmocsac.com/wp-content/uploads/2018/04/logo.png" ></a>
+			<a href="#"><img src="http://huongmocsac.com/wp-content/uploads/2018/10/logo.png" ></a>
 		</div>
 	</div>
 <!--    <div class="header-search-form">-->
